@@ -1,6 +1,9 @@
 import { createSlice,
     createAsyncThunk,
+    createEntityAdapter,
 } from '@reduxjs/toolkit';
+
+import { RootState } from '.';
 
 interface UserData {
     id: number
@@ -13,23 +16,27 @@ interface UserData {
 export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
     const response = await fetch('https://reqres.in/api/users?delay=1');
     return (await response.json()).data as UserData[];
-})
+});
+
+export const usersAdapter = createEntityAdapter<UserData>();
 
 const usersSlice = createSlice({
 
     name: "users",
-    initialState: {
-        users: [] as UserData [],
-        loading: false,
-    },
+    initialState: usersAdapter.getInitialState({
+           loading: false,
+    }),
+    
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(fetchUsers.pending, (state, action) => {
             state.loading = true;
         });
         builder.addCase(fetchUsers.fulfilled, (state, action) => {
-            state.users = action.payload;
+            usersAdapter.setAll(state, action.payload);
             state.loading = false;
+            // state.users = action.payload;
+           // state.loading = false;
         });
         builder.addCase(fetchUsers.rejected, (state) => {
             state.loading = false;
@@ -37,4 +44,12 @@ const usersSlice = createSlice({
     }
 });
 
+export const {
+    selectById: selectUserById,
+    selectIds: selectUserIds,
+    selectEntities: selectUserEntities,
+    selectAll: selectAllUsers,
+    selectTotal: selectTotalUsers
+  } = usersAdapter.getSelectors((state: RootState) => state.users);
+  
 export default usersSlice.reducer;
