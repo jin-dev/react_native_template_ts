@@ -1,0 +1,49 @@
+{
+  "name": "tsNativeApp",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@types/jest": "^27.0.2",
+    "@types/react": "^17.0.24",
+    "@types/react-native": "^0.65.1",
+    "husky": "^7.0.2",
+    "react": "17.0.2",
+    "react-native": "0.65.1",
+    "tslib": "^2.3.1",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-config-standard": "^9.0.0",
+    "tslint-etc": "^1.13.10",
+    "tslint-react": "^5.0.0",
+    "tslint-react-hooks": "^2.2.2",
+    "tsutils": "^3.21.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/runtime": "^7.15.4",
+    "@react-native-community/eslint-config": "^3.0.1",
+    "babel-jest": "^27.2.1",
+    "eslint": "^7.32.0",
+    "jest": "^27.2.1",
+    "metro-react-native-babel-preset": "^0.66.2",
+    "react-native-codegen": "^0.0.7",
+    "react-test-renderer": "17.0.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run lint"
+    }
+  },
+  "lint": "tslint src/**/*.ts* --project tsconfig.json",
+  "jest": {
+    "preset": "react-native"
+  }
+}
