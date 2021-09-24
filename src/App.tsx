@@ -29,6 +29,7 @@ import {
 import { Provider } from 'react-redux';
 import { store } from './store';
 import Message from './components/Message';
+import Users from './components/Users';
 
 const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -70,6 +71,7 @@ const App: () => Node = () => {
         Hello There.
       </Section>
       <Message/>
+      <Users />
     </Provider>
   );
 };
