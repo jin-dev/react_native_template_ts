@@ -2,3 +2,7 @@ Redux Tool kit
 
 https://hybridheroes.de/blog/2021-01-08-redux-toolkit-react-native/
 
+
+React Navigation v6
+
+https://www.youtube.com/watch?v=KV1A97t4BMc&list=PLG6Cxs9K4_gMdlpZlBC5De7FN59k5PkLr&index=1

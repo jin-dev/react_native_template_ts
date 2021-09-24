@@ -25,11 +25,13 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import { NavigationContainer } from '@react-navigation/native';
 
 import { Provider } from 'react-redux';
 import { store } from './store';
 import Message from './components/Message';
 import Users from './components/Users';
+import MyTabs from './screens/BottomTab';
 
 const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -67,11 +69,11 @@ const App: () => Node = () => {
   return (
     <Provider store={store}>
       <StatusBar barStyle="dark-content" />
-      <Section title ="Test 1">
-        Hello There.
-      </Section>
-      <Message/>
-      <Users />
+      
+      <NavigationContainer>
+    <MyTabs />
+        </NavigationContainer>
+     
     </Provider>
   );
 };
